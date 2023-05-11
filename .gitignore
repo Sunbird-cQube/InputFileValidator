@@ -1,0 +1,15 @@
+# Ignore compiled Python files
+*.pyc
+__pycache__/
+
+# Ignore project-specific files and directories
+.env
+.idea/
+*.egg-info/
+dist/
+build/
+*.log
+
+# Ignore system and temporary files
+.DS_Store
+Thumbs.db
