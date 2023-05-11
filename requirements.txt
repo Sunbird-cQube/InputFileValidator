@@ -1,0 +1,9 @@
+# File Validator Project Dependencies
+# Framework/library for file parsing and manipulation
+pandas==1.4.0
+# Library for file format validation
+pydantic==1.8.2
+# Library for regular expression pattern matching
+regex==2021.4.4
+# Library for generating log files
+loguru==0.5.3
