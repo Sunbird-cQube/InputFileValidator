@@ -1,0 +1,97 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #fce773;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 50px;
+  color: #424242;
+  animation: fadeInDown 1s ease-in-out;
+}
+
+form {
+  width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0px 0px 20px rgba(0,0,0,0.1);
+  animation: fadeInUp 1s ease-in-out;
+}
+
+label {
+  display: block;
+  margin-top: 20px;
+  color: #000000;
+}
+
+input, textarea {
+  padding: 5px;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #BDBDBD;
+  background: url('https://cdn.pixabay.com/photo/2017/05/02/18/44/paintbrush-2276009_960_720.jpg') no-repeat;
+  background-size: 40px;
+  background-position: 95% center;
+  margin-bottom: 20px;
+}
+
+textarea {
+  height: 150px;
+}
+
+button {
+  margin-top: 30px;
+  padding: 10px 20px;
+  background-color: #FF8F00;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 16px;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+button:hover {
+  background-color: #F57C00;
+}
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
