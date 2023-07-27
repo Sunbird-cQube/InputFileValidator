@@ -1,0 +1,22 @@
+{
+  "properties": [
+    {
+      "name": "Column 1",
+      "data_type": "string",
+      "min_length": 1,
+      "max_length": 50
+    },
+    {
+      "name": "Column 2",
+      "data_type": "integer",
+      "min_length": 1,
+      "max_length": 100
+    },
+    {
+      "name": "Column 3",
+      "data_type": "string",
+      "min_length": 5,
+      "max_length": 200
+    }
+  ]
+}
