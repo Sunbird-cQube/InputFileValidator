@@ -1,0 +1,35 @@
+{
+    "program": "diksha_etb_plays-per-capita",
+    "input": {
+        "type": "object",
+        "properties": {
+            "state_name": {
+                "type": "string",
+                "shouldnotnull": true
+            },
+            "plays_per_capita": {
+                "type": "number",
+                "shouldnotnull": true
+            },
+            "state_code": {
+                "type": "string",
+                "shouldnotnull": true
+            },
+            "latitude": {
+                "type": "number",
+                "shouldnotnull": true
+            },
+            "longitude": {
+                "type": "number",
+                "shouldnotnull": true
+            }
+        },
+        "required": [
+            "state_name",
+            "plays_per_capita",
+            "state_code",
+            "latitude",
+            "longitude"
+        ]
+    }
+}

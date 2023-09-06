@@ -1,0 +1,45 @@
+{
+    "program": "diksha_nishtha_tot-courses-medium",
+    "input": {
+        "type": "object",
+        "properties": {
+            "program_name": {
+                "type": "string",
+                "shouldnotnull": true
+            },
+            "state_name": {
+                "type": "string",
+                "shouldnotnull": true
+            },
+            "total_courses": {
+                "type": "number",
+                "shouldnotnull": true
+            },
+            "total_medium": {
+                "type": "number",
+                "shouldnotnull": true
+            },
+            "state_ode": {
+                "type": "string",
+                "shouldnotnull": true
+            },
+            "latitude": {
+                "type": "number",
+                "shouldnotnull": true
+            },
+            "longitude": {
+                "type": "number",
+                "shouldnotnull": true
+            }
+        },
+        "required": [
+            "program_name",
+            "state_name",
+            "total_courses",
+            "total_medium",
+            "state_code",
+            "latitude",
+            "longitude"
+        ]
+    }
+}

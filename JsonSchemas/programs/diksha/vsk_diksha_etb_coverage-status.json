@@ -1,0 +1,40 @@
+{
+    "program": "vsk_diksha_etb_coverage-status",
+    "input": {
+        "type": "object",
+        "properties": {
+            "textbook_id": {
+                "type": "string",
+                "shouldnotnull": true
+            },
+            "medium": {
+                "type": "string",
+                "shouldnotnull": true
+            },
+            "grade": {
+                "type": "string",
+                "shouldnotnull": true
+            },
+            "subject": {
+                "type": "string",
+                "shouldnotnull": true
+            },
+            "linked_qr_count": {
+                "type": "number",
+                "shouldnotnull": true
+            },
+            "resource_count": {
+                "type": "number",
+                "shouldnotnull": true
+            }
+        },
+        "required": [
+            "textbook_id",
+            "medium",
+            "grade",
+            "subject",
+            "linked_qr_count",
+            "resource_count"
+        ]
+    }
+}

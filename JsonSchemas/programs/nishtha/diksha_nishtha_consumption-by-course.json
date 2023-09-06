@@ -1,0 +1,65 @@
+{
+    "program": "diksha_nishtha_consumption-by-course",
+    "input": {
+        "type": "object",
+        "properties": {
+            "published_by": {
+                "type": "string",
+                "shouldnotnull": true
+            },
+            "user_state": {
+                "type": "string",
+                "shouldnotnull": true
+            },
+            "course_name": {
+                "type": "string",
+                "shouldnotnull": true
+            },
+            "program": {
+                "type": "string",
+                "shouldnotnull": true
+            },
+            "enrollments": {
+                "type": "number",
+                "shouldnotnull": true
+            },
+            "completion": {
+                "type": "number",
+                "shouldnotnull": true
+            },
+            "certification": {
+                "type": "number",
+                "shouldnotnull": true
+            },
+            "state_name": {
+                "type": "string",
+                "shouldnotnull": true
+            },
+            "state_code": {
+                "type": "string",
+                "shouldnotnull": true
+            },
+            "latitude": {
+                "type": "number",
+                "shouldnotnull": true
+            },
+            "longitude": {
+                "type": "number",
+                "shouldnotnull": true
+            }
+        },
+        "required": [
+            "published_by",
+            "user_state",
+            "course_name",
+            "program",
+            "enrollments",
+            "completion",
+            "certification",
+            "state_name",
+            "state_code",
+            "latitude",
+            "longitude"
+        ]
+    }
+}

@@ -1,0 +1,20 @@
+{
+    "program": "academicyear",
+    "input": {
+        "type": "object",
+        "properties": {
+            "academicyear_id": {
+                "type": "string",
+                "shouldNotNull": true
+            },
+            "academicyear": {
+                "type": "string",
+                "shouldNotNull": true
+            }
+        },
+        "required": [
+            "academicyear_id",
+            "academicyear"
+        ]
+    }
+}

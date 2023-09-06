@@ -1,0 +1,35 @@
+{
+    "program": "udise_program-started",
+    "input": {
+        "type": "object",
+        "properties": {
+            "state_name": {
+                "type": "string",
+                "shouldnotnull": true
+            },
+            "started": {
+                "type": "string",
+                "shouldnotnull": true
+            },
+            "State Code": {
+                "type": "string",
+                "shouldnotnull": true
+            },
+            "Latitude": {
+                "type": "number",
+                "shouldnotnull": true
+            },
+            "Longitude": {
+                "type": "number",
+                "shouldnotnull": true
+            }
+        },
+        "required": [
+            "state",
+            "started",
+            "state_code",
+            "latitude",
+            "longitude"
+        ]
+    }
+}

@@ -1,0 +1,53 @@
+{
+    "program": "cluster",
+    "input": {
+        "type": "object",
+        "properties": {
+            "cluster_id": {
+                "type": "string",
+                "shouldNotNull": true,
+                "unique": true
+            },
+            "cluster_name": {
+                "type": "string",
+                "shouldNotNull": true
+            },
+            "block_id": {
+                "type": "string",
+                "shouldNotNull": true,
+                "unique": true
+            },
+            "block_name": {
+                "type": "string",
+                "shouldNotNull": true
+            },
+            "district_id": {
+                "type": "string",
+                "shouldNotNull": true,
+                "unique": true
+            },
+            "district_name": {
+                "type": "string",
+                "shouldNotNull": true
+            },
+            "latitude": {
+                "type": "number",
+                "shouldNotNull": false
+            },
+            "longitude": {
+                "type": "number",
+                "shouldNotNull": false
+            }
+        },
+        "required": [
+            "cluster_id",
+            "cluster_name",
+            "block_id",
+            "block_name",
+            "district_id",
+            "district_name",
+            "latitude",
+            "longitude"
+        ]
+    }
+}

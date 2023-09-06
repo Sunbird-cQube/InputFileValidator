@@ -1,0 +1,125 @@
+{
+    "program": "udise-all-dashboard",
+    "input": {
+        "type": "object",
+        "properties": {
+            "state_name": {
+                "type": "string",
+                "shouldnotnull": true
+            },
+            "district_name": {
+                "type": "string",
+                "shouldnotnull": true
+            },
+            "state_code": {
+                "type": "string",
+                "shouldnotnull": true
+            },
+            "district_code": {
+                "type": "string",
+                "shouldnotnull": true
+            },
+            "latitude": {
+                "type": "number",
+                "shouldnotnull": true
+            },
+            "longitude": {
+                "type": "number",
+                "shouldnotnull": true
+            },
+            "number_of_teachers": {
+                "type": "number",
+                "shouldnotnull": true
+            },
+            "number_of_schools": {
+                "type": "number",
+                "shouldnotnull": true
+            },
+            "number_of_tudents": {
+                "type": "number",
+                "shouldnotnull": true
+            },
+            "ptr": {
+                "type": "number",
+                "shouldnotnull": true
+            },
+            "tot_schools_having_toilet": {
+                "type": "number",
+                "shouldnotnull": true
+            },
+            "tot_schools_having_drinkingwater": {
+                "type": "number",
+                "shouldnotnull": true
+            },
+            "tot_schools_having_electricity": {
+                "type": "number",
+                "shouldnotnull": true
+            },
+            "tot_schools_having_library": {
+                "type": "number",
+                "shouldnotnull": true
+            },
+            "tot_govt_n_govtaided_schools_recieved_textbook": {
+                "type": "number",
+                "shouldnotnull": true
+            },
+            "Total Enrollment CWSN": {
+                "type": "number",
+                "shouldnotnull": true
+            },
+            "tot_schools_having_ramp": {
+                "type": "number",
+                "shouldnotnull": true
+            },
+            "% schools having toilet": {
+                "type": "number",
+                "shouldnotnull": true
+            },
+            "%_schools_having_drinking_water": {
+                "type": "number",
+                "shouldnotnull": true
+            },
+            "%_schools_having_electricity": {
+                "type": "number",
+                "shouldnotnull": true
+            },
+            "%_schools_having_library": {
+                "type": "number",
+                "shouldnotnull": true
+            },
+            "%_govt_aided_schools_received_textbook": {
+                "type": "number",
+                "shouldnotnull": true
+            },
+            "%_schools_with_ramp": {
+                "type": "number",
+                "shouldnotnull": true
+            }
+        },
+        "required": [
+            "state_name",
+            "district_name",
+            "state_code",
+            "district_code",
+            "latitude",
+            "longitude",
+            "number_of_teachers",
+            "number_of_schools",
+            "number_of_students",
+            "ptr",
+            "tot_schools_having_toilet",
+            "tot_schools_having_drinkingwater",
+            "tot_schools_having_electricity",
+            "tot_schools_having_library",
+            "tot_govt_n_govtaided_schools_recieved_textbook",
+            "total_enrollment_cwsn",
+            "tot_schools_having_ramp",
+            "%_schools_having_toilet",
+            "%_schools_having_drinking_water",
+            "%_schools_having_electricity",
+            "%_schools_having_library",
+            "%_govt_aided_schools_received_textbook",
+            "%_schools_with_ramp"
+        ]
+    }
+}

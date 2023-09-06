@@ -1,0 +1,712 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Validation Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!--========== BOX ICONS ==========-->
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+    
+    <!--========== CSS ==========-->
+    <link rel="stylesheet" href="{% static 'stylesHome.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-chart-heatmap"></script>
+    <title>File Processing</title>
+    <style>
+            .sub-menu-wrap {
+                position: absolute;
+                top: 100%;
+                right: 10%;
+                width: 320px;
+                max-height: 0px;
+                overflow: hidden;
+                transition: transform 0.5s;
+            }
+        
+            .sub-menu-wrap.open-menu {
+                max-height: 400px;
+            }
+        
+            .sub-menu {
+                background: #FFF;
+                padding: 20px;
+                margin: 10px;
+            }
+        
+            .user-info {
+                display: flex;
+                align-items: center;
+            }
+        
+            .user-info h3 {
+                font-weight: 500;
+            }
+        
+            .user-info img {
+                height: 50px;
+                width: 50px;
+                border-radius: 50%;
+                margin-right: 15px;
+            }
+        
+            .sub-menu hr {
+                border: 0;
+                height: 1px;
+                width: 100%;
+                background: #ccc;
+                margin: 15px 0 10px;
+            }
+        
+            .sub-menu-link {
+                display: flex;
+                align-items: center;
+                text-decoration: none;
+                color: #525252;
+                margin: 12px 0;
+            }
+        
+            .sub-menu-link p {
+                width: 100%;
+            }
+        
+            .sub-menu-link img {
+                width: 40px;
+                background: #e5e5e5;
+                border-radius: 50%;
+                padding: 8px;
+                margin-right: 15px;
+            }
+        
+            .sub-menu-link span {
+                font-size: 22px;
+                transition: transform 0.5s;
+            }
+        
+            .sub-menu-link:hover span {
+                transform: translateX(5px);
+            }
+        
+            .sub-menu-link:hover p {
+                font-weight: 600;
+            }
+            * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .dashboard {
+            display: flex;
+            flex-wrap: wrap;
+            
+            padding-top: 6%;
+        }
+
+        .dummy-values {
+            width: 25%; /* Adjust the width as needed */
+            padding: 40px;
+            border-right: 1px solid #ccc;
+        }
+
+        .dummy-value {
+            
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        .graph-container {
+            width: 75%; /* Adjust the width as needed */
+            padding: 20px;
+            
+        }
+
+        .chart-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .chart-container {
+            width: calc(50% - 10px);
+            height: 400px;
+            margin: 10px;
+            padding: 50px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .chartjs-render-monitor .chartjs-tooltip {
+            text-align: center;
+        }
+
+        /* Media query for smaller screens */
+        @media screen and (max-width: 768px) {
+        .dummy-values {
+            max-width: none;
+            border-bottom: none;
+            font-size: small;
+        }
+        .dummy-values .dummy-value h3{
+            font-size: large;
+            font-weight: bold;
+        }
+
+        .graph-container {
+            padding: 10px;
+        }
+        .chart-row{
+            display: block;
+        }
+        .chart-container {
+            width: 95%;
+            margin-bottom: 20px;
+        }
+        .graph-container h1{
+            padding-top: 5%;
+        } 
+        }
+        
+
+    /* Styles for header and footer */
+    header {
+      /* background-color: #333; */
+      color: #fff;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header-buttons {
+      display: flex;
+    }
+
+    .header-buttons button {
+      margin-left: 10px;
+      background-color: #4CAF50;
+      color: #fff;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .header-buttons button:hover {
+      background-color: #45a049;
+    }
+
+    .header-buttons button:active {
+      background-color: #3e874d;
+    }
+
+    footer {
+      /* background-color: #333; */
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+      margin-top: auto;
+    }
+
+
+    /* Dark mode styles */
+    body.dark-mode {
+      background-color: #222;
+      color: #fff;
+    }
+
+    body.dark-mode header {
+      background-color: #444;
+      color: #fff;
+    }
+
+    body.dark-mode footer {
+      background-color: #444;
+      color: #fff;
+    }
+
+    body.dark-mode .container {
+      background-color: #333;
+      color: #fff;
+    }
+
+    body.dark-mode .dashboard .dummy-values .dummy-value {
+      background-color: #333;
+      color: #fff;
+    }
+    body.dark-mode .dashboard .graph-container .chart-container {
+      background-color: #333;
+      color: #fff;
+    }
+
+
+    /* Dark mode button styles */
+    .dark-mode-button {
+      margin-left: 10px;
+      background-color: #4CAF50;
+      color: #fff;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .dark-mode-button:hover {
+      background-color: #45a049;
+    }
+
+    .dark-mode-button:active {
+      background-color: #3e874d;
+    }
+
+    .dark-mode .instructions-container,
+    .dark-mode .upload-files-container {
+      background-color: #333;
+    }
+
+
+    
+    </style>
+</head>
+
+<body>
+    <header class="l-header" id="header">
+        <nav class="nav bd-container">
+            <a href="#" class="nav__logo">CSVALID</a>
+    
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="{% url 'home' %}" class="nav__link active-link">Home</a></li>
+                    <li class="nav__item"><a href="{% url 'index' %}" class="nav__link">Basic Validation</a></li>
+                    <li class="nav__item"><a href="/custom-validation/" class="nav__link">Custom Validation</a></li>
+                    <li class="nav__item"><a href="/instructions/" class="nav__link">Instructions</a></li>
+    
+                    <li><i class='bx bx-moon change-theme' id="theme-button"></i></li>
+                </ul>
+            </div>
+            <div class="nav__toggle" id="nav-toggle">
+                <i class='bx bx-menu'></i>
+            </div>
+            {% if username %}
+            <img src="{%static 'user.png'%}" class="user-pic" style="height: 50px;width: 50px;cursor: pointer;border-radius: 50%;"
+                onclick="toggleMenu()">
+            <div class="sub-menu-wrap" id="subMenu">
+                <div class="sub-menu">
+                    <div class="user-info">
+                        <img src="{%static 'user.png'%}">
+                        <h2 style="color: #222;">hello</h2>
+                    </div>
+                    <hr>
+                    <span class="welcome-text" style="color: #222;">Welcome, {{ username }}</span>
+                    <a href="#" class="sub-menu-link">
+                        <img src="{%static 'profile.png'%}">
+                        <p>Edit profile</p>
+                        <span>></span>
+                    </a>
+                    <a href="#" class="sub-menu-link">
+                        <img src="{%static 'setting.png'%}">
+                        <p>Settings & privacy</p>
+                        <span>></span>
+                    </a>
+                    <a href="#" class="sub-menu-link">
+                        <img src="{%static 'help.png'%}">
+                        <p>Help & Support</p>
+                        <span>></span>
+                    </a>
+                    {% if request.user.is_staff %}
+                    <a href="{% url 'dashboard' %}" class="sub-menu-link">
+                        <img src="{% static 'dashboard.png' %}">
+                        <p>Dashboard</p>
+                        <span>></span>
+                    </a>
+                    {% endif %}
+                    <a href="#" class="">
+                        <a href="{% url 'logout_view' %}" class="sub-menu-link">
+                            <img src="{%static 'logout.png'%}">
+                            <p>Logout</p>
+                            <span>></span>
+                        </a>
+                        {% else %}
+                        <a href="{% url 'login' %}" class="sub-menu-link">
+                            <img src="{%static 'logout.png'%}">
+                            <p>Login</p>
+                            <span>></span>
+                        </a>
+                        {% endif %}
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="dashboard">
+        
+        <div class="dummy-values">
+            <div class="dummy-value">
+                <h3>Total Users</h3>
+                <p>Value: {{total_users}}</p>
+            </div>
+            <div class="dummy-value">
+                <h3>Total Errors Identified</h3>
+                <p>Value: {{total_errors}}</p>
+            </div>
+            <div class="dummy-value">
+                <h3>Total Custom Errors</h3>
+                <p>Value: {{total_custom_errors}}</p>
+            </div>
+        </div>
+        <div class="graph-container">
+            <h1>Dashboard</h1>
+            <div class="chart-row">
+                <div class="chart-container">
+                    <h2>Validation Summary</h2>
+                    <!-- Data Completeness Gauge -->
+                    <canvas id="completenessGauge"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h2>Error Distribution</h2>
+                    <!-- Error Distribution Chart -->
+                    <canvas id="errorDistributionChart"></canvas>
+                </div>
+            </div>
+            <!-- <div class="chart-row">
+                <div class="chart-container">
+                    <h2>Error Heatmap</h2>
+                   
+                    <canvas id="errorHeatmap"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h2>Dimension Validation</h2>
+                   
+                    <canvas id="dimensionValidationChart"></canvas>
+                </div>
+            </div> -->
+            <div class="chart-row">
+                <div class="chart-container">
+                    <h2>Users Growth</h2>
+                    <!-- Metric Value Range Chart -->
+                    <canvas id="metricValueRangeChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h2>Custom Rule Visualization</h2>
+                    <!-- Custom Rule Visualization -->
+                    <canvas id="customRuleChart"></canvas>
+                </div>
+            </div>
+            <!-- <div class="chart-row">
+                <div class="chart-container">
+                    <h2>Before-and-After</h2>
+                    <canvas id="beforeAfterChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h2>Upload History</h2>
+                    <canvas id="uploadHistoryChart"></canvas>
+                </div>
+            </div> -->
+            
+        </div>
+    </div>
+    <footer>
+        <p>© File Validator. All rights reserved.</p>
+    </footer>
+    <script>
+
+            document.addEventListener('DOMContentLoaded', function () {
+                const uploadInput = document.querySelector('.upload-input');
+                const uploadButton = document.querySelector('.upload-button');
+
+                uploadInput.addEventListener('change', function () {
+                    if (uploadInput.value) {
+                        uploadButton.style.display = 'block';
+                    }
+                });
+            });
+        // Placeholder data (replace with actual data)
+        const completenessData = 70; // Completeness percentage
+        const errorDistributionData = {
+            labels: ['Mandatory', 'Unique', 'String', 'Number', 'Allowed Values'],
+            data: ['{{mandatory_sum}}', '{{unique_sum}}', '{{string_sum}}', '{{number_sum}}', '{{allowed_values_sum}}']
+        };
+        // Add more placeholder data for other charts...
+        
+        // Data Completeness Gauge
+        new Chart(document.getElementById('completenessGauge').getContext('2d'), {
+            type: 'doughnut',
+            data: {
+                datasets: [{
+                    data: [100 - "{{mandatory_sum}}","{{mandatory_sum}}"],
+                    backgroundColor: ['#36A2EB', '#eaeaea']
+                }],
+                labels: ['Completeness', 'Missing']
+            },
+            options: {
+                cutoutPercentage: 80,
+                responsive: true,
+                maintainAspectRatio: false,
+                legend: {
+                    display: false
+                }
+            }
+        });
+
+        // Error Distribution Chart
+        new Chart(document.getElementById('errorDistributionChart').getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: errorDistributionData.labels,
+                datasets: [{
+                    data: errorDistributionData.data,
+                    backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF']
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                legend: {
+                    display: false
+                }
+            }
+        });
+
+        // Placeholder data for other charts...
+
+         // Placeholder data for the heatmap
+            // const errorHeatmapData = [
+            //     [10, 5, 8],
+            //     [2, 15, 3],
+            //     [7, 6, 12]
+            //     // Add more rows of data...
+            // ];
+
+            // // Convert the errorHeatmapData into a format suitable for a bar chart
+            // const labels = ['Row 1', 'Row 2', 'Row 3']; // Labels for each row
+            // const colors = ['#FF6384', '#FFCE56', '#36A2EB']; // Gradient colors for each row
+
+            // // Create a dataset for each row of data
+            // const datasets = errorHeatmapData.map((rowData, rowIndex) => ({
+            //     label: labels[rowIndex],
+            //     data: rowData,
+            //     backgroundColor: colors[rowIndex]
+            // }));
+
+            // // Error Heatmap (Bar Chart with Gradients)
+            // new Chart(document.getElementById('errorHeatmap').getContext('2d'), {
+            //     type: 'bar',
+            //     data: {
+            //         labels: ['Column 1', 'Column 2', 'Column 3'], // Labels for each column
+            //         datasets: datasets
+            //     },
+            //     options: {
+            //         responsive: true,
+            //         maintainAspectRatio: false,
+            //         scales: {
+            //             x: {
+            //                 stacked: true // Stack the bars
+            //             },
+            //             y: {
+            //                 stacked: true
+            //             }
+            //         }
+            //     }
+            // });
+
+
+            // // Placeholder data for Dimension Validation
+            // const dimensionValidationData = {
+            //     dimensions: ['Dimension A', 'Dimension B', 'Dimension C', 'Dimension D'],
+            //     uploadedValues: [25, 30, 18, 22],
+            //     masterDataValues: [22, 30, 20, 22]
+            // };
+
+            // // Dimension Validation Chart (Bar Chart)
+            // new Chart(document.getElementById('dimensionValidationChart').getContext('2d'), {
+            //     type: 'bar',
+            //     data: {
+            //         labels: dimensionValidationData.dimensions,
+            //         datasets: [
+            //             {
+            //                 label: 'Uploaded Values',
+            //                 data: dimensionValidationData.uploadedValues,
+            //                 backgroundColor: '#36A2EB'
+            //             },
+            //             {
+            //                 label: 'Master Data Values',
+            //                 data: dimensionValidationData.masterDataValues,
+            //                 backgroundColor: '#FFCE56'
+            //             }
+            //         ]
+            //     },
+            //     options: {
+            //         responsive: true,
+            //         maintainAspectRatio: false,
+            //         scales: {
+            //             y: {
+            //                 beginAtZero: true
+            //             }
+            //         }
+            //     }
+            // });
+
+            // Placeholder data for Metric Value Range
+            
+            const metricValueRangeData = {
+                timePeriods: '{{time_periods}}'.split(','),
+                values: "{{user_counts}}".split(',') // Replace with actual data
+                
+            };
+            
+
+            // Metric Value Range Chart (Line Chart)
+            new Chart(document.getElementById('metricValueRangeChart').getContext('2d'), {
+                type: 'line',
+                data: {
+                    labels: metricValueRangeData.timePeriods,
+                    datasets: [
+                        {
+                            label: 'Users Growth',
+                            data: metricValueRangeData.values,
+                            borderColor: '#4BC0C0',
+                            fill: false
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+
+                    let sub = document.getElementById("subMenu")
+                        function toggleMenu() {
+                            sub.classList.toggle("open-menu")
+                        }
+
+            // Placeholder data for Custom Rule Visualization
+            const customRuleData = {
+                labels: ['Regx Error', 'Missing Values', 'Min Len', 'Max Len', 'Integer', 'Float', 'String'], // Replace with actual labels
+                values: ['{{Regx_Error}}', '{{Missing_value}}', '{{Min_Len}}', '{{Max_len}}', '{{Integer}}', '{{Float}}', '{{String}}'] // Replace with actual boolean values
+            };
+
+            // Custom Rule Visualization (Doughnut Chart)
+            new Chart(document.getElementById('customRuleChart').getContext('2d'), {
+                type: 'doughnut',
+                data: {
+                    labels: customRuleData.labels,
+                    datasets: [{
+                        data: customRuleData.values,
+                        backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40', '#00CC99']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutoutPercentage: 60
+                }
+            });
+
+            // Placeholder data for Before-and-After Visualization
+            // const beforeAfterData = {
+            //     labels: ['Data Point A', 'Data Point B', 'Data Point C'], // Replace with actual labels
+            //     originalValues: [25, 30, 18], // Replace with actual original values
+            //     correctedValues: [22, 28, 20] // Replace with actual corrected values
+            // };
+
+            // // Before-and-After Visualization (Bar Chart)
+            // new Chart(document.getElementById('beforeAfterChart').getContext('2d'), {
+            //     type: 'bar',
+            //     data: {
+            //         labels: beforeAfterData.labels,
+            //         datasets: [
+            //             {
+            //                 label: 'Original Values',
+            //                 data: beforeAfterData.originalValues,
+            //                 backgroundColor: '#FF6384'
+            //             },
+            //             {
+            //                 label: 'Corrected Values',
+            //                 data: beforeAfterData.correctedValues,
+            //                 backgroundColor: '#36A2EB'
+            //             }
+            //         ]
+            //     },
+            //     options: {
+            //         responsive: true,
+            //         maintainAspectRatio: false,
+            //         scales: {
+            //             y: {
+            //                 beginAtZero: true
+            //             }
+            //         }
+            //     }
+            // });
+
+            // // Placeholder data for File Upload History
+            // const uploadHistoryData = {
+            //     timestamps: ['Jan 1', 'Jan 15', 'Feb 1', 'Feb 15'], // Replace with actual timestamps
+            //     passedFiles: [12, 15, 8, 11], // Replace with actual counts
+            //     failedFiles: [2, 1, 3, 0] // Replace with actual counts
+            // };
+
+            // // File Upload History Chart (Line Chart)
+            // new Chart(document.getElementById('uploadHistoryChart').getContext('2d'), {
+            //     type: 'line',
+            //     data: {
+            //         labels: uploadHistoryData.timestamps,
+            //         datasets: [
+            //             {
+            //                 label: 'Passed Files',
+            //                 data: uploadHistoryData.passedFiles,
+            //                 borderColor: '#4BC0C0',
+            //                 fill: false
+            //             },
+            //             {
+            //                 label: 'Failed Files',
+            //                 data: uploadHistoryData.failedFiles,
+            //                 borderColor: '#FF6384',
+            //                 fill: false
+            //             }
+            //         ]
+            //     },
+            //     options: {
+            //         responsive: true,
+            //         maintainAspectRatio: false,
+            //         scales: {
+            //             y: {
+            //                 beginAtZero: true
+            //             }
+            //         }
+            //     }
+            // });
+    </script>
+        <!--========== SCROLL REVEAL ==========-->
+        <script src="https://unpkg.com/scrollreveal"></script>
+        
+        <!--========== MAIN JS ==========-->
+        <script src="{% static 'main.js' %}"></script>
+</body>
+
+</html>

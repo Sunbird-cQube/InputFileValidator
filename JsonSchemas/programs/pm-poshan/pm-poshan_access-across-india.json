@@ -1,0 +1,54 @@
+{
+    "program": "pm-poshan_access-across-india",
+    "input": {
+        "type": "object",
+        "properties": {
+               "state_name": {
+                "type": "string",
+                "shouldnotnull": true
+            },
+            "district_name": {
+                "type": "string",
+                "shouldnotnull": true
+            },
+            "state_code": {
+                "type": "string",
+                "shouldnotnull": true
+            },
+            "district_code": {
+                "type": "string",
+                "shouldnotnull": true
+            },
+            "latitude": {
+                "type": "number",
+                "shouldnotnull": true
+            },
+            "longitude": {
+                "type": "number",
+                "shouldnotnull": true
+            },
+            "enrolled": {
+                "type": "number",
+                "shouldnotnull": true
+            },
+            "meal_served": {
+                "type": "number",
+                "shouldnotnull": false
+            },
+            "total_schools": {
+                "type": "number",
+                "shouldnotnull": true
+            }
+        },
+        "required": [
+            "state_name",
+            "district_name",
+            "state_code",
+            "district_code",
+            "latitude",
+            "longitude",
+            "enrolled",
+            "total_schools"
+        ]
+    }
+}

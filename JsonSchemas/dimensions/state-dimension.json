@@ -1,0 +1,30 @@
+{
+    "program": "state",
+    "input": {
+        "type": "object",
+        "properties": {
+            "state_id": {
+                "type": "string",
+                "shouldNotNull": true
+            },
+            "state_name": {
+                "type": "string",
+                "shouldNotNull": true
+            },
+            "latitude":{
+                "type": "number",
+                "shouldNotNull": false
+            },
+            "longitude":{
+                "type": "number",
+                "shouldNotNull": false
+            }
+        },
+        "required":[
+            "state_id",
+            "state_name",
+            "latitude",
+            "longitude"
+        ]
+    }
+}

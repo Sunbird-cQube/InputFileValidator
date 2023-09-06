@@ -1,0 +1,45 @@
+{
+    "program": "totalteachers",
+    "input": {
+        "type": "object",
+        "properties": {
+            "date": {
+                "type": "string",
+                "shouldNotNull": true
+            },
+            "district_id": {
+                "type": "string",
+                "shouldNotNull": true,
+                "unique": true
+            },
+            "block_id": {
+                "type": "string",
+                "shouldNotNull": true,
+                "unique": true
+            },
+            "cluster_id": {
+                "type": "string",
+                "shouldNotNull": true,
+                "unique": true
+            },
+            "school_id": {
+                "type": "string",
+                "shouldNotNull": true,
+                "unique": true
+            },
+           
+            "total_teachers": {
+                "type": "number",
+                "shouldNotNull": true
+            }
+        },
+        "required": [
+            "date",
+            "district_id",
+            "block_id",
+            "cluster_id",
+            "school_id",
+            "total_teachers"
+        ]
+    }
+}

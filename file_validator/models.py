@@ -25,3 +25,19 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.user.username
+
+
+class ValidationError(models.Model):
+    error_type = models.CharField(max_length=255, null=True)
+    error_count = models.IntegerField(default=0)
+
+    def __str__(self):
+        return f"{self.error_type} - Count: {self.error_count}"
+
+
+class CustomValidationError(models.Model):
+    error_type = models.CharField(max_length=255, null=True)
+    error_count = models.IntegerField(default=0)
+
+    def __str__(self):
+        return f"{self.error_type} - Count: {self.error_count}"

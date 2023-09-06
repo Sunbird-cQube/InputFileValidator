@@ -1,0 +1,55 @@
+{
+    "program": "vsk_diksha_etb_qr-coverage",
+    "input": {
+        "type": "object",
+        "properties": {
+            "textbook_id": {
+                "type": "string",
+                "shouldnotnull": true
+            },
+            "textbook_name": {
+                "type": "string",
+                "shouldnotnull": true
+            },
+            "medium": {
+                "type": "string",
+                "shouldnotnull": true
+            },
+            "grade": {
+                "type": "string",
+                "shouldnotnull": true
+            },
+            "subject": {
+                "type": "string",
+                "shouldnotnull": true
+            },
+            "day_of_created_on": {
+                "type": "string",
+                "shouldnotnull": true
+            },
+            "qr_coverage": {
+                "type": "number",
+                "shouldnotnull": true
+            },
+            "qr_codes_linked_to_content": {
+                "type": "number",
+                "shouldnotnull": true
+            },
+            "total_qr_codes": {
+                "type": "number",
+                "shouldnotnull": true
+            }
+        },
+        "required": [
+            "textbook_id",
+            "textbook_name",
+            "medium",
+            "grade",
+            "subject",
+            "day_of_created_on",
+            "qr_coverage",
+            "qr_codes_linked_to_content",
+            "total_qr_codes"
+        ]
+    }
+}

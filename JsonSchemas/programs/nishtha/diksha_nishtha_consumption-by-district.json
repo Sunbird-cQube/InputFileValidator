@@ -1,0 +1,65 @@
+{
+    "program": "diksha_nishtha_consumption-by-district",
+    "input": {
+        "type": "object",
+        "properties": {
+            "program": {
+                "type": "string",
+                "shouldnotnull": true
+            },
+            "district_name": {
+                "type": "string",
+                "shouldnotnull": true
+            },
+             "state_name": {
+                "type": "string",
+                "shouldnotnull": true
+            },
+            "total_enrollments": {
+                "type": "number",
+                "shouldnotnull": true
+            },
+            "total_completion": {
+                "type": "number",
+                "shouldnotnull": true
+            },
+            "total_certifications": {
+                "type": "number",
+                "shouldnotnull": true
+            },
+            "certification%": {
+                "type": "number",
+                "shouldnotnull": true
+            },
+            "state_code": {
+                "type": "string",
+                "shouldnotnull": true
+            },
+            "district_code": {
+                "type": "string",
+                "shouldnotnull": true
+            },
+            "latitude": {
+                "type": "number",
+                "shouldnotnull": true
+            },
+            "longitude": {
+                "type": "number",
+                "shouldnotnull": true
+            }
+        },
+        "required": [
+            "program",
+            "district_name",
+            "state_name",
+            "total_enrollments",
+            "total_completion",
+            "total_certifications",
+            "certification%",
+            "state_code",
+            "district_code",
+            "latitude",
+            "longitude"
+        ]
+    }
+}
