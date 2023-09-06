@@ -1,0 +1,65 @@
+{
+    "program": "diksha_etb_learning-session",
+    "input": {
+        "type": "object",
+        "properties": {
+            "board": {
+                "type": "string",
+                "shouldnotnull": true
+            },
+            "subject": {
+                "type": "string",
+                "shouldnotnull": true
+            },
+            "content_name": {
+                "type": "string",
+                "shouldnotnull": true
+            },
+            "mime_type": {
+                "type": "string",
+                "shouldnotnull": true
+            },
+            "total_no_of_plays(App and Portal)": {
+                "type": "number",
+                "shouldnotnull": true
+            },
+            "average_play_time_in_mins(On App and Portal)": {
+                "type": "number",
+                "shouldnotnull": true
+            },
+            "grade": {
+                "type": "string",
+                "shouldnotnull": true
+            },
+            "medium": {
+                "type": "string",
+                "shouldnotnull": true
+            },
+            "category": {
+                "type": "string",
+                "shouldnotnull": true
+            },
+            "state_name": {
+                "type": "string",
+                "shouldnotnull": true
+            },
+            "state_code": {
+                "type": "string",
+                "shouldnotnull": true
+            }
+        },
+        "required": [
+            "board",
+            "subject",
+            "content_name",
+            "mime_type",
+            "total_no_of_plays(App and Portal)",
+            "average_play_time_in_mins(On App and Portal)",
+            "grade",
+            "medium",
+            "category",
+            "state_name",
+            "state_code"
+        ]
+    }
+}

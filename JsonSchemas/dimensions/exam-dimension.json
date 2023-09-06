@@ -1,0 +1,25 @@
+{
+    "program": "exam",
+    "input": {
+        "type": "object",
+        "properties": {
+            "exam_id": {
+                "type": "string",
+                "shouldNotNull": true
+            },
+            "academicyear_id": {
+                "type": "string",
+                "shouldNotNull": true
+            },
+             "exam_event": {
+                "type": "string",
+                "shouldNotNull": true
+            }
+        },
+        "required":[
+            "exam_id",
+            "academicyear_id",
+            "exam_event"
+        ]
+    }
+}

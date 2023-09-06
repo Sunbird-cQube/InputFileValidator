@@ -1,0 +1,20 @@
+{
+    "program": "schoolmanagement",
+    "input": {
+        "type": "object",
+        "properties": {
+            "schoolmanagement_id": {
+                "type": "string",
+                "shouldnotnull": true
+            },
+            "schoolmanagement_name": {
+                "type": "string",
+                "shouldnotnull": true
+            }
+        },
+        "required": [
+            "schoolmanagement_id",
+            "schoolmanagement_name"
+        ]
+    }
+}

@@ -6,8 +6,14 @@
 <head>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'stylesHome.css' %}">
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--========== BOX ICONS ==========-->
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+
+    <!--========== CSS ==========-->
+    <link rel="stylesheet" href="{% static 'stylesHome.css' %}">
     <title>File Processing</title>
     <style>
         * {
@@ -20,6 +26,7 @@
         body {
             font-family: 'Montserrat', sans-serif;
         }
+
         /* Styles for header and footer */
         header {
             /* background-color: #333; */
@@ -54,8 +61,6 @@
         }
 
         footer {
-            /* background-color: #333; */
-            color: #fff;
             padding: 10px;
             text-align: center;
             margin-top: auto;
@@ -64,38 +69,53 @@
         /* Main layout styles */
         .main-container {
             display: flex;
-            justify-content: center; /* Center the content horizontally */
-            align-items: center; /* Center the content vertically */
+            justify-content: center;
+            /* Center the content horizontally */
+            align-items: center;
+            /* Center the content vertically */
             padding: 100px;
             min-height: calc(100vh - 100px);
         }
 
         /* Left container styles */
-        .upload-files-container /* Keep the same styles for both containers */
+        .upload-files-container
+
+        /* Keep the same styles for both containers */
         /* .instructions-container  */
-        {
-            width: calc(50% - 20px); /* Adjusted width to make it equal size and responsive */
-            background-color: #f8f8f8; /* Lighter background color */
+            {
+            width: calc(50% - 20px);
+            /* Adjusted width to make it equal size and responsive */
             border-radius: 40px;
             padding: 60px 60px;
             box-shadow: rgba(0, 0, 0, 0.24) 0px 10px 20px, rgba(0, 0, 0, 0.28) 0px 6px 6px;
             margin-bottom: 20px;
             display: flex;
             flex-direction: column;
-            align-items: center; /* Center horizontally */
+            align-items: center;
+            /* Center horizontally */
         }
 
         /* Right container styles */
-        
+
         /* Adjusted Styles */
         .drag-file-area {
+
             border: 2px dashed #4CAF50;
             border-radius: 40px;
-            margin: 10px 0 15px;
+            margin: 10px auto 15px;
+            /* Changed margin to auto horizontally and added top margin */
             padding: 30px 50px;
-            width: 100%; /* Adjusted width to make it fit perfectly */
-            max-width: 350px; /* Maximum width for larger screens */
+            width: 100%;
+            /* Adjusted width to make it fit perfectly */
+            max-width: 350px;
+            /* Maximum width for larger screens */
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* Center both horizontally and vertically */
+            justify-content: center;
+            /* Center vertically */
         }
 
         .drag-file-area .upload-icon {
@@ -139,8 +159,13 @@
         }
 
         @keyframes fadeIn {
-            0% {opacity: 0;}
-            100% {opacity: 1;}
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
         }
 
         .cannot-upload-message span,
@@ -157,8 +182,10 @@
             color: #f7fff7;
             background-color: #4CAF50;
             transition: all 1s;
-            width: 100%; /* Adjusted width to make it fit perfectly */
-            max-width: 390px; /* Maximum width for larger screens */
+            width: 100%;
+            /* Adjusted width to make it fit perfectly */
+            max-width: 390px;
+            /* Maximum width for larger screens */
             position: relative;
             display: none;
             flex-direction: row;
@@ -201,6 +228,7 @@
         }
 
         .upload-button {
+            margin: auto;
             font-family: 'Montserrat';
             background-color: #4CAF50;
             color: #f7fff7;
@@ -209,7 +237,8 @@
             font-size: 18px;
             border: none;
             border-radius: 20px;
-            margin-top: 10px; /* Adjusted margin to center the button */
+            margin-top: 20px;
+            /* Adjusted margin to center the button */
             padding: 7.5px 50px;
             cursor: pointer;
         }
@@ -220,11 +249,22 @@
                 flex-direction: column;
             }
 
-            .instructions-container,
+
             .upload-files-container {
-                width: 100%;
-                max-width: unset; /* Remove max-width for smaller screens */
+                width: 180%;
+                max-width: unset;
+                /* Remove max-width for smaller screens */
             }
+
+            .drag-file-area {
+                width: 80%;
+            }
+
+            .database_validate {
+                width: 80%;
+                align-items: center;
+            }
+
         }
 
         /* Dark mode styles */
@@ -265,73 +305,150 @@
         }
 
         footer {
-            background-color: #fff;
-            /* Set footer background to white */
-            color: #333;
-            /* Set footer text color to black */
             padding: 10px;
             text-align: center;
             margin-top: auto;
         }
-        /* Dark mode styles */
-        body.dark-mode {
-            background-color: #222;
-            color: #fff;
-        }
 
-        body.dark-mode header {
-            background-color: #444;
-            color: #fff;
-        }
-
-        body.dark-mode footer {
-            background-color: #444;
-            color: #fff;
-        }
-
-        body.dark-mode .container {
-            background-color: #333;
-            color: #fff;
-        }
-
-        body.dark-mode .container .instructions h2 {
-            color: #fff;
-        }
-
-        /* body.dark-mode .upload-label, */
-        body.dark-mode .upload-button,
-        body.dark-mode .download-button {
-            background-color: #4CAF50;
-            color: #fff;
-        }
-
-        /* Dark mode button styles */
-        .dark-mode-button {
-            margin-left: 10px;
-            background-color: #4CAF50;
-            color: #fff;
-            padding: 8px 16px;
-            border: none;
-            border-radius: 4px;
+        #file_folder {
+            padding: 10px;
+            border: 2px solid #4CAF50;
+            border-radius: 5px;
+            font-size: 16px;
+            width: 100%;
+            max-width: 300px;
+            /* Adjust the maximum width as needed */
+            margin-top: 15px;
+            background-color: #f8f8f8;
+            /* Light background color */
+            color: #333;
             cursor: pointer;
-            transition: background-color 0.3s ease;
         }
 
-        .dark-mode-button:hover {
-            background-color: #45a049;
+        #file_folder option {
+            font-size: 14px;
+            background-color: #f8f8f8;
+            /* Light background color */
+            color: #333;
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+            /* Add a separator line between options */
+            transition: background-color 0.3s, color 0.3s;
         }
 
-        .dark-mode-button:active {
-            background-color: #3e874d;
+        /* Hover effect for dropdown options */
+        #file_folder option:hover {
+            background-color: #4CAF50;
+            color: #fff;
         }
-        .dark-mode .instructions-container,
-    .dark-mode .upload-files-container {
-        background-color: #333;
-    }
+
+        /* Style for the dropdown when open */
+        #file_folder:focus {
+            outline: none;
+            border-color: #45a049;
+            box-shadow: 0 0 5px #45a049;
+        }
+
+        /* Style for the dropdown arrow icon */
+        #file_folder::-ms-expand {
+            display: none;
+            /* Hide the default arrow icon in IE */
+        }
+
+        /* Style for the dropdown arrow icon in modern browsers */
+        #file_folder::after {
+            content: '\25BC';
+            /* Unicode character for a downward arrow */
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            font-size: 16px;
+            color: #4CAF50;
+            pointer-events: none;
+            /* Make the arrow non-clickable */
+        }
+
+        .sub-menu-wrap {
+            position: absolute;
+            top: 100%;
+            right: 10%;
+            width: 320px;
+            max-height: 0px;
+            overflow: hidden;
+            transition: transform 0.5s;
+        }
+
+        .sub-menu-wrap.open-menu {
+            max-height: 400px;
+        }
+
+        .sub-menu {
+            background: #FFF;
+            padding: 20px;
+            margin: 10px;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .user-info h3 {
+            font-weight: 500;
+        }
+
+        .user-info img {
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        .sub-menu hr {
+            border: 0;
+            height: 1px;
+            width: 100%;
+            background: #ccc;
+            margin: 15px 0 10px;
+        }
+
+        .sub-menu-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #525252;
+            margin: 12px 0;
+        }
+
+        .sub-menu-link p {
+            width: 100%;
+        }
+
+        .sub-menu-link img {
+            width: 40px;
+            background: #e5e5e5;
+            border-radius: 50%;
+            padding: 8px;
+            margin-right: 15px;
+        }
+
+        .sub-menu-link span {
+            font-size: 22px;
+            transition: transform 0.5s;
+        }
+
+        .sub-menu-link:hover span {
+            transform: translateX(5px);
+        }
+
+        .sub-menu-link:hover p {
+            font-weight: 600;
+        }
     </style>
 </head>
 
-<body >
+<body>
     <header class="l-header" id="header">
         <nav class="nav bd-container">
             <a href="#" class="nav__logo">CSVALID</a>
@@ -342,24 +459,60 @@
                     <li class="nav__item"><a href="{% url 'index' %}" class="nav__link">Basic Validation</a></li>
                     <li class="nav__item"><a href="/custom-validation/" class="nav__link">Custom Validation</a></li>
                     <li class="nav__item"><a href="/instructions/" class="nav__link">Instructions</a></li>
-                    <li><button class="dark-mode-button" onclick="toggleDarkMode()">Toggle Dark Mode</button></li>
-                    {% if username %}
-                    <li class="nav__item welcome-dropdown" id="welcome-dropdown">
-                        <span class="welcome-text">Welcome, {{ username }}</span>
-                        <ul class="dropdown">
-                            <li><a href="">Logout</a></li>
-                        </ul>
-                    </li>
-
-                    {% else %}
-                    <li class="nav__item"><a href="" class="button1">Login</a></li>
-                    {% endif %}
-
                     <li><i class='bx bx-moon change-theme' id="theme-button"></i></li>
                 </ul>
             </div>
+            {% if username %}
+            <img src="{%static 'user.png'%}" class="user-pic"
+                style="height: 50px;width: 50px;cursor: pointer;border-radius: 50%;" onclick="toggleMenu()">
+            <div class="sub-menu-wrap" id="subMenu">
+                <div class="sub-menu">
+                    <div class="user-info">
+                        <img src="{%static 'user.png'%}">
+                        <h2>hello</h2>
+                    </div>
+                    <hr>
+                    <span class="welcome-text">Welcome, {{ username }}</span>
+                    <a href="#" class="sub-menu-link">
+                        <img src="{%static 'profile.png'%}">
+                        <p>Edit profile</p>
+                        <span>></span>
+                    </a>
+                    <a href="#" class="sub-menu-link">
+                        <img src="{%static 'setting.png'%}">
+                        <p>Settings & privacy</p>
+                        <span>></span>
+                    </a>
+                    <a href="#" class="sub-menu-link">
+                        <img src="{%static 'help.png'%}">
+                        <p>Help & Support</p>
+                        <span>></span>
+                    </a>
+                    {% if request.user.is_staff %}
+                    <a href="{% url 'dashboard' %}" class="sub-menu-link">
+                        <img src="{% static 'dashboard.png' %}">
+                        <p>Dashboard</p>
+                        <span>></span>
+                    </a>
+                    {% endif %}
+                    <a href="#" class="">
+                        <a href="{% url 'logout_view' %}" class="sub-menu-link">
+                            <img src="{%static 'logout.png'%}">
+                            <p>Logout</p>
+                            <span>></span>
+                        </a>
+                        {% else %}
+                        <a href="{% url 'login' %}" class="sub-menu-link">
+                            <img src="{%static 'logout.png'%}">
+                            <p>Login</p>
+                            <span>></span>
+                        </a>
+                        {% endif %}
+                    </a>
+                </div>
+            </div>
             <div class="nav__toggle" id="nav-toggle">
-                <i class='bx bx-menu' onclick="toggleDarkMode()"></i>
+                <i class='bx bx-menu'></i>
             </div>
         </nav>
     </header>
@@ -367,59 +520,38 @@
     <div class="main-container">
         <div class="upload-files-container">
             <h1>File Processing</h1>
-            {% if error_occured == 0 %}
-                <p></p>
-            {% elif error_occured == 1 %}
-            <h2 style="color: #3e874d;">Errors occurred while processing the CSV file:</h2>
-            <ul>
-                {% for error in error_messages %}
-                <li>{{ error }}</li>
-                {% endfor %}
-            </ul>
-            {% if show_download %}
-            <a class="download-button" href="{% url 'download' %}">Download Highlighted CSV</a>
-            {% endif %}
-            {% else %}
-            <h2>No errors occurred while processing the CSV file.</h2>
-            {% endif %}
             <form class="upload-form" action="" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="drag-file-area">
                     <span class="material-icons-outlined upload-icon">file_upload</span>
                     <h3 class="dynamic-message">Drag & drop any file here</h3>
                     <label class="upload-label">or <span class="browse-files">
-                        <input type="file" class="default-file-input" name="csv_file" />
-                        <span
-                                class="browse-files-text">browse file</span></span></label>
+                            <input type="file" class="default-file-input" name="csv_file" />
+                            <span class="browse-files-text">browse file</span></span></label>
                 </div>
-                <span class="cannot-upload-message"><span class="material-icons-outlined">error</span> Please select a CSV file
+                <span class="cannot-upload-message"><span class="material-icons-outlined">error</span> Please select a
+                    CSV file
                     first<span class="material-icons-outlined cancel-alert-button">cancel</span></span>
                 <div class="file-block">
                     <div class="file-info"><span class="material-icons-outlined file-icon">description</span><span
                             class="file-name"></span> | <span class="file-size"></span></div>
                     <span class="material-icons remove-file-icon">delete</span>
                     <div class="progress-bar"></div>
+
                 </div>
-               
+                <div class="database_validate">
+                    <label for="file_folder">Select database to validate:</label>
+                    <select id="file_folder" name="file_folder">
+                        {% for item in files_and_folders %}
+                        <option value="{{ item }}">{{ item }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
                 <button type="input" class="upload-button">Upload</button>
             </form>
         </div>
-        
 
-    <!-- <div class="instructions-container">
-        <h2>Instructions</h2>
-        <p>Follow these steps to upload your file:</p>
-        <ol>
-            <li>Click the "Browse" button or drag and drop your file into the designated area.</li>
-            <li>If the file is successfully uploaded, you will see the file details below.</li>
-            <li>To remove the uploaded file, click the "Delete" icon.</li>
-            <li>Click the "Upload" button to start the upload process.</li>
-            <li>Make sure the first column contains name in string.</li>
-            <li>Make sure the second column contains age in integer.</li>
-            <li>Make sure the third column contains email in string.</li>
-            <li>If any errors occur during the processing, they will be displayed above.</li>
-        </ol>
-    </div> -->
     </div>
 
     <footer>
@@ -428,113 +560,113 @@
 
     <script>
         var isAdvancedUpload = function () {
-                var div = document.createElement('div');
-                return (('draggable' in div) || ('ondragstart' in div && 'ondrop' in div)) && 'FormData' in window && 'FileReader' in window;
-            }();
+            var div = document.createElement('div');
+            return (('draggable' in div) || ('ondragstart' in div && 'ondrop' in div)) && 'FormData' in window && 'FileReader' in window;
+        }();
 
-            let draggableFileArea = document.querySelector(".drag-file-area");
-            let browseFileText = document.querySelector(".browse-files");
-            let uploadIcon = document.querySelector(".upload-icon");
-            let dragDropText = document.querySelector(".dynamic-message");
-            let fileInput = document.querySelector(".default-file-input");
-            let cannotUploadMessage = document.querySelector(".cannot-upload-message");
-            let cancelAlertButton = document.querySelector(".cancel-alert-button");
-            let uploadedFile = document.querySelector(".file-block");
-            let fileName = document.querySelector(".file-name");
-            let fileSize = document.querySelector(".file-size");
-            let progressBar = document.querySelector(".progress-bar");
-            let removeFileButton = document.querySelector(".remove-file-icon");
-            let uploadButton = document.querySelector(".upload-button");
-            let fileFlag = 0;
+        let draggableFileArea = document.querySelector(".drag-file-area");
+        let browseFileText = document.querySelector(".browse-files");
+        let uploadIcon = document.querySelector(".upload-icon");
+        let dragDropText = document.querySelector(".dynamic-message");
+        let fileInput = document.querySelector(".default-file-input");
+        let cannotUploadMessage = document.querySelector(".cannot-upload-message");
+        let cancelAlertButton = document.querySelector(".cancel-alert-button");
+        let uploadedFile = document.querySelector(".file-block");
+        let fileName = document.querySelector(".file-name");
+        let fileSize = document.querySelector(".file-size");
+        let progressBar = document.querySelector(".progress-bar");
+        let removeFileButton = document.querySelector(".remove-file-icon");
+        let uploadButton = document.querySelector(".upload-button");
+        let fileFlag = 0;
 
-            fileInput.addEventListener("click", () => {
-                fileInput.value = '';
-                console.log(fileInput.value);
+        fileInput.addEventListener("click", () => {
+            fileInput.value = '';
+            console.log(fileInput.value);
+        });
+
+        fileInput.addEventListener("change", e => {
+            console.log(" > " + fileInput.value)
+            uploadIcon.innerHTML = 'check_circle';
+            dragDropText.innerHTML = 'File Dropped Successfully!';
+            document.querySelector(".label").innerHTML = `drag & drop or <span class="browse-files"> <input type="file" class="default-file-input" style=""/> <span class="browse-files-text" style="top: 0;"> browse file</span></span>`;
+            uploadButton.innerHTML = `Upload`;
+            fileName.innerHTML = fileInput.files[0].name;
+            fileSize.innerHTML = (fileInput.files[0].size / 1024).toFixed(1) + " KB";
+            uploadedFile.style.cssText = "display: flex;";
+            progressBar.style.width = 0;
+            fileFlag = 0;
+        });
+
+        uploadButton.addEventListener("click", () => {
+            let isFileUploaded = fileInput.value;
+            if (isFileUploaded != '') {
+                if (fileFlag == 0) {
+                    fileFlag = 1;
+                    var width = 0;
+                    var id = setInterval(frame, 50);
+                    function frame() {
+                        if (width >= 390) {
+                            clearInterval(id);
+                            uploadButton.innerHTML = `<span class="material-icons-outlined upload-button-icon"> check_circle </span> Uploaded`;
+                        } else {
+                            width += 5;
+                            progressBar.style.width = width + "px";
+                        }
+                    }
+                }
+
+            } else {
+                cannotUploadMessage.style.cssText = "display: flex; animation: fadeIn linear 1.5s;";
+            }
+        });
+
+        cancelAlertButton.addEventListener("click", () => {
+            cannotUploadMessage.style.cssText = "display: none;";
+        });
+
+        if (isAdvancedUpload) {
+            ["drag", "dragstart", "dragend", "dragover", "dragenter", "dragleave", "drop"].forEach(evt =>
+                draggableFileArea.addEventListener(evt, e => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                })
+            );
+
+            ["dragover", "dragenter"].forEach(evt => {
+                draggableFileArea.addEventListener(evt, e => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    uploadIcon.innerHTML = 'file_download';
+                    dragDropText.innerHTML = 'Drop your file here!';
+                });
             });
 
-            fileInput.addEventListener("change", e => {
-                console.log(" > " + fileInput.value)
+            draggableFileArea.addEventListener("drop", e => {
                 uploadIcon.innerHTML = 'check_circle';
                 dragDropText.innerHTML = 'File Dropped Successfully!';
-                document.querySelector(".label").innerHTML = `drag & drop or <span class="browse-files"> <input type="file" class="default-file-input" style=""/> <span class="browse-files-text" style="top: 0;"> browse file</span></span>`;
+                document.querySelector(".label").innerHTML = `drag & drop or <span class="browse-files"> <input type="file" class="default-file-input" style=""/> <span class="browse-files-text" style="top: -23px; left: -20px;"> browse file</span> </span>`;
                 uploadButton.innerHTML = `Upload`;
-                fileName.innerHTML = fileInput.files[0].name;
-                fileSize.innerHTML = (fileInput.files[0].size / 1024).toFixed(1) + " KB";
+
+                let files = e.dataTransfer.files;
+                fileInput.files = files;
+                console.log(files[0].name + " " + files[0].size);
+                console.log(document.querySelector(".default-file-input").value);
+                fileName.innerHTML = files[0].name;
+                fileSize.innerHTML = (files[0].size / 1024).toFixed(1) + " KB";
                 uploadedFile.style.cssText = "display: flex;";
                 progressBar.style.width = 0;
                 fileFlag = 0;
             });
+        }
 
-            uploadButton.addEventListener("click", () => {
-                let isFileUploaded = fileInput.value;
-                if (isFileUploaded != '') {
-                    if (fileFlag == 0) {
-                        fileFlag = 1;
-                        var width = 0;
-                        var id = setInterval(frame, 50);
-                        function frame() {
-                            if (width >= 390) {
-                                clearInterval(id);
-                                uploadButton.innerHTML = `<span class="material-icons-outlined upload-button-icon"> check_circle </span> Uploaded`;
-                            } else {
-                                width += 5;
-                                progressBar.style.width = width + "px";
-                            }
-                        }
-                    }
-                
-                } else {
-                    cannotUploadMessage.style.cssText = "display: flex; animation: fadeIn linear 1.5s;";
-                }
-            });
-
-            cancelAlertButton.addEventListener("click", () => {
-                cannotUploadMessage.style.cssText = "display: none;";
-            });
-
-            if (isAdvancedUpload) {
-                ["drag", "dragstart", "dragend", "dragover", "dragenter", "dragleave", "drop"].forEach(evt =>
-                    draggableFileArea.addEventListener(evt, e => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                    })
-                );
-
-                ["dragover", "dragenter"].forEach(evt => {
-                    draggableFileArea.addEventListener(evt, e => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        uploadIcon.innerHTML = 'file_download';
-                        dragDropText.innerHTML = 'Drop your file here!';
-                    });
-                });
-
-                draggableFileArea.addEventListener("drop", e => {
-                    uploadIcon.innerHTML = 'check_circle';
-                    dragDropText.innerHTML = 'File Dropped Successfully!';
-                    document.querySelector(".label").innerHTML = `drag & drop or <span class="browse-files"> <input type="file" class="default-file-input" style=""/> <span class="browse-files-text" style="top: -23px; left: -20px;"> browse file</span> </span>`;
-                    uploadButton.innerHTML = `Upload`;
-
-                    let files = e.dataTransfer.files;
-                    fileInput.files = files;
-                    console.log(files[0].name + " " + files[0].size);
-                    console.log(document.querySelector(".default-file-input").value);
-                    fileName.innerHTML = files[0].name;
-                    fileSize.innerHTML = (files[0].size / 1024).toFixed(1) + " KB";
-                    uploadedFile.style.cssText = "display: flex;";
-                    progressBar.style.width = 0;
-                    fileFlag = 0;
-                });
-            }
-
-            removeFileButton.addEventListener("click", () => {
-                uploadedFile.style.cssText = "display: none;";
-                fileInput.value = '';
-                uploadIcon.innerHTML = 'file_upload';
-                dragDropText.innerHTML = 'Drag & drop any file here';
-                document.querySelector(".label").innerHTML = `or <span class="browse-files"> <input type="file" class="default-file-input"/> <span class="browse-files-text">browse file</span> <span>from device</span> </span>`;
-                uploadButton.innerHTML = `Upload`;
-            });
+        removeFileButton.addEventListener("click", () => {
+            uploadedFile.style.cssText = "display: none;";
+            fileInput.value = '';
+            uploadIcon.innerHTML = 'file_upload';
+            dragDropText.innerHTML = 'Drag & drop any file here';
+            document.querySelector(".label").innerHTML = `or <span class="browse-files"> <input type="file" class="default-file-input"/> <span class="browse-files-text">browse file</span> <span>from device</span> </span>`;
+            uploadButton.innerHTML = `Upload`;
+        });
 
         // JavaScript function to toggle dark mode
         function toggleDarkMode() {
@@ -552,7 +684,13 @@
                 }
             });
         });
+        let sub = document.getElementById("subMenu")
+        function toggleMenu() {
+            sub.classList.toggle("open-menu")
+        }
     </script>
+    <!--========== MAIN JS ==========-->
+    <script src="{% static 'main.js' %}"></script>
 </body>
 
 </html>

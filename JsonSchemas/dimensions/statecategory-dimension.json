@@ -1,0 +1,20 @@
+{
+    "program": "statecategory",
+    "input": {
+        "type": "object",
+        "properties": {
+            "school_statecategory_id": {
+                "type": "string",
+                "shouldnotnull": true
+            },
+            "school_statecategory_name": {
+                "type": "string",
+                "shouldnotnull": true
+            }   
+        },
+        "required": [
+            "school_statecategory_id",
+            "school_statecategory_name"
+        ]
+    }
+}

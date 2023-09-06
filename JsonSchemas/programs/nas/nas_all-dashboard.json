@@ -1,0 +1,70 @@
+{
+    "program": "nas_all-dashboard",
+    "input": {
+        "type": "object",
+        "properties": {
+            "state_name": {
+                "type": "string",
+                "shouldnotnull": true
+            },
+            "district_name": {
+                "type": "string",
+                "shouldnotnull": true
+            },
+            "state_code": {
+                "type": "string",
+                "shouldnotnull": true
+            },
+            "district_code": {
+                "type": "string",
+                "shouldnotnull": true
+            },
+            "number_of_schools": {
+                "type": "number",
+                "shouldnotnull": true
+            },
+            "number_of_teachers": {
+                "type": "number",
+                "shouldnotnull": true
+            },
+            "students_surveyed": {
+                "type": "number",
+                "shouldnotnull": true
+            },
+            "learning_outcome_code": {
+                "type": "string",
+                "shouldnotnull": true
+            },
+            "performance": {
+                "type": "number",
+                "shouldnotnull": true
+            },
+            "subject": {
+                "type": "string",
+                "shouldnotnull": true
+            },
+            "grade": {
+                "type": "string",
+                "shouldnotnull": true
+            },
+            "learning_outcome": {
+                "type": "string",
+                "shouldnotnull": true
+            }
+        },
+        "required": [
+            "state_name",
+            "district_name",
+            "state_code",
+            "district_code",
+            "number_of_schools",
+            "number_of_teachers",
+            "students_surveyed",
+            "learning_outcome_code",
+            "performance",
+            "subject",
+            "grade",
+            "learning_outcome"
+        ]
+    }
+}

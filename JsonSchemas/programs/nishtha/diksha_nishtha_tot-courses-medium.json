@@ -1,0 +1,40 @@
+{
+    "program": "diksha_nishtha_program-started",
+    "input": {
+        "type": "object",
+        "properties": {
+            "program": {
+                "type": "string",
+                "shouldnotnull": true
+            },
+            "state_name": {
+                "type": "string",
+                "shouldnotnull": true
+            },
+            "started": {
+                "type": "string",
+                "shouldnotnull": true
+            },
+            "state_code": {
+                "type": "string",
+                "shouldnotnull": true
+            },
+            "latitude": {
+                "type": "number",
+                "shouldnotnull": true
+            },
+            "longitude": {
+                "type": "number",
+                "shouldnotnull": true
+            }
+        },
+        "required": [
+            "program",
+            "state_name",
+            "started",
+            "state_code",
+            "latitude",
+            "longitude"
+        ]
+    }
+}

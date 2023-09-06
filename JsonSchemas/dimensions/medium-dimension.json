@@ -1,0 +1,20 @@
+{
+    "program": "medium",
+    "input": {
+        "type": "object",
+        "properties": {
+            "medium_id": {
+                "type": "string",
+                "shouldNotNull": true
+            },
+            "medium": {
+                "type": "string",
+                "shouldNotNull": true
+            }
+        },
+        "required":[
+            "medium_id",
+            "medium"
+        ]
+    }
+}

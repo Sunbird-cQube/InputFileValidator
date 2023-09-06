@@ -1,0 +1,95 @@
+{
+    "program": "diksha_nishtha_percentage-enrollment-certification",
+    "input": {
+        "type": "object",
+        "properties": {
+            "program": {
+                "type": "string",
+                "shouldnotnull": true
+            },
+            "state_name": {
+                "type": "string",
+                "shouldnotnull": true
+            },
+            "state_code": {
+                "type": "string",
+                "shouldnotnull": true
+            },
+            "latitude": {
+                "type": "number",
+                "shouldnotnull": true
+            },
+            "longitude": {
+                "type": "number",
+                "shouldnotnull": true
+            },
+            "total_enrolments": {
+                "type": "number",
+                "shouldnotnull": true
+            },
+            "total_completions": {
+                "type": "number",
+                "shouldnotnull": true
+            },
+            "total_certificates_issued": {
+                "type": "number",
+                "shouldnotnull": true
+            },
+            "total_courses": {
+                "type": "number",
+                "shouldnotnull": true
+            },
+            "doe": {
+                "type": "number",
+                "shouldnotnull": true
+            },
+            "local_body": {
+                "type": "number",
+                "shouldnotnull": true
+            },
+            "%_target_achieved_enrolment": {
+                "type": "number",
+                "shouldnotnull": true
+            },
+            "%_target_achieved_ertificates": {
+                "type": "number",
+                "shouldnotnull": true
+            },
+            "%_target_remaining_enrolment": {
+                "type": "number",
+                "shouldnotnull": true
+            },
+            "%_target_remaining_certificates": {
+                "type": "number",
+                "shouldnotnull": true
+            },
+            "total_expected_enrolment": {
+                "type": "number",
+                "shouldnotnull": true
+            },
+            "total_expected_certification": {
+                "type": "number",
+                "shouldnotnull": true
+            }
+        },
+        "required": [
+            "program",
+            "state",
+            "state_code",
+            "latitude",
+            "longitude",
+            "total_enrolments",
+            "total_completions",
+            "total_certificates_issued",
+            "total_courses",
+            "doe",
+            "local_body",
+            "%_target_achieved_enrolment",
+            "%_target_achieved_certificates",
+            "%_target_remaining_enrolment",
+            "%_target_remaining_certificates",
+            "total_expected_enrolment",
+            "total_expected_certification"
+        ]
+    }
+}

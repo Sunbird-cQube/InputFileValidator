@@ -8,14 +8,90 @@
     <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    
     <!--========== BOX ICONS ==========-->
     <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
-
+    
     <!--========== CSS ==========-->
     <link rel="stylesheet" href="{% static 'stylesHome.css' %}">
     <title>File Processing</title>
     <style>
+                    .sub-menu-wrap {
+                position: absolute;
+                top: 100%;
+                right: 10%;
+                width: 320px;
+                max-height: 0px;
+                overflow: hidden;
+                transition: transform 0.5s;
+            }
+        
+            .sub-menu-wrap.open-menu {
+                max-height: 400px;
+            }
+        
+            .sub-menu {
+                background: #FFF;
+                padding: 20px;
+                margin: 10px;
+            }
+        
+            .user-info {
+                display: flex;
+                align-items: center;
+            }
+        
+            .user-info h3 {
+                font-weight: 500;
+            }
+        
+            .user-info img {
+                height: 50px;
+                width: 50px;
+                border-radius: 50%;
+                margin-right: 15px;
+            }
+        
+            .sub-menu hr {
+                border: 0;
+                height: 1px;
+                width: 100%;
+                background: #ccc;
+                margin: 15px 0 10px;
+            }
+        
+            .sub-menu-link {
+                display: flex;
+                align-items: center;
+                text-decoration: none;
+                color: #525252;
+                margin: 12px 0;
+            }
+        
+            .sub-menu-link p {
+                width: 100%;
+            }
+        
+            .sub-menu-link img {
+                width: 40px;
+                background: #e5e5e5;
+                border-radius: 50%;
+                padding: 8px;
+                margin-right: 15px;
+            }
+        
+            .sub-menu-link span {
+                font-size: 22px;
+                transition: transform 0.5s;
+            }
+        
+            .sub-menu-link:hover span {
+                transform: translateX(5px);
+            }
+        
+            .sub-menu-link:hover p {
+                font-weight: 600;
+            }
         * {
             margin: 0;
             padding: 0;
@@ -83,7 +159,7 @@
 
         /* Keep the same styles for both containers */
         .instructions-container {
-            /* Lighter background color */
+            width: calc(50% - 20px);
             border-radius: 40px;
             padding: 60px 60px;
             box-shadow: rgba(0, 0, 0, 0.24) 0px 10px 20px, rgba(0, 0, 0, 0.28) 0px 6px 6px;
@@ -168,6 +244,8 @@
         }
 
         footer {
+            /* Set footer background to white */
+            /* Set footer text color to black */
             padding: 10px;
             text-align: center;
             margin-top: auto;
@@ -230,81 +308,37 @@
             background-color: #333;
         }
 
-        .sub-menu-wrap {
-            position: absolute;
-            top: 100%;
-            right: 10%;
-            width: 320px;
-            max-height: 0px;
-            overflow: hidden;
-            transition: transform 0.5s;
+        table {
+        border-collapse: collapse;
+        width: 100%;
         }
 
-        .sub-menu-wrap.open-menu {
-            max-height: 400px;
+        th, td {
+        border: 1px solid #ccc;
+        padding: 10px;
         }
 
-        .sub-menu {
-            background: #FFF;
-            padding: 20px;
-            margin: 10px;
+        th {
+        text-align: left;
         }
 
-        .user-info {
-            display: flex;
-            align-items: center;
+
+        .download-button {
+        background-color: #4CAF50;
+        color: #fff;
+        padding: 8px 16px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
         }
 
-        .user-info h3 {
-            font-weight: 500;
+        .download-button:hover {
+        background-color: #45a049;
         }
 
-        .user-info img {
-            height: 50px;
-            width: 50px;
-            border-radius: 50%;
-            margin-right: 15px;
-        }
-
-        .sub-menu hr {
-            border: 0;
-            height: 1px;
-            width: 100%;
-            background: #ccc;
-            margin: 15px 0 10px;
-        }
-
-        .sub-menu-link {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            color: #525252;
-            margin: 12px 0;
-        }
-
-        .sub-menu-link p {
-            width: 100%;
-        }
-
-        .sub-menu-link img {
-            width: 40px;
-            background: #e5e5e5;
-            border-radius: 50%;
-            padding: 8px;
-            margin-right: 15px;
-        }
-
-        .sub-menu-link span {
-            font-size: 22px;
-            transition: transform 0.5s;
-        }
-
-        .sub-menu-link:hover span {
-            transform: translateX(5px);
-        }
-
-        .sub-menu-link:hover p {
-            font-weight: 600;
+        .download-button:active {
+        background-color: #3e874d;
         }
     </style>
 </head>
@@ -323,17 +357,20 @@
                     <li><i class='bx bx-moon change-theme' id="theme-button"></i></li>
                 </ul>
             </div>
+            <div class="nav__toggle" id="nav-toggle">
+                <i class='bx bx-menu'></i>
+            </div>
             {% if username %}
-            <img src="{%static 'user.png'%}" class="user-pic"
-                style="height: 50px;width: 50px;cursor: pointer;border-radius: 50%;" onclick="toggleMenu()">
+            <img src="{%static 'user.png'%}" class="user-pic" style="height: 50px;width: 50px;cursor: pointer;border-radius: 50%;"
+                onclick="toggleMenu()">
             <div class="sub-menu-wrap" id="subMenu">
                 <div class="sub-menu">
                     <div class="user-info">
                         <img src="{%static 'user.png'%}">
-                        <h2 style="color: #333;">hello</h2>
+                        <h2 style="color: #222;">hello</h2>
                     </div>
                     <hr>
-                    <span class="welcome-text" style="color: #333;">Welcome, {{ username }}</span>
+                    <span class="welcome-text" style="color: #222;">Welcome, {{ username }}</span>
                     <a href="#" class="sub-menu-link">
                         <img src="{%static 'profile.png'%}">
                         <p>Edit profile</p>
@@ -372,9 +409,6 @@
                     </a>
                 </div>
             </div>
-            <div class="nav__toggle" id="nav-toggle">
-                <i class='bx bx-menu'></i>
-            </div>
         </nav>
     </header>
 
@@ -382,18 +416,31 @@
 
 
         <div class="instructions-container">
-            <h2>Instructions</h2>
-            <p>Follow these steps to upload your file:</p>
-            <ol>
-                <li>Click the "Browse" button or drag and drop your file into the designated area.</li>
-                <li>If the file is successfully uploaded, you will see the file details below.</li>
-                <li>To remove the uploaded file, click the "Delete" icon.</li>
-                <li>Click the "Upload" button to start the upload process.</li>
-                <li>Make sure the first column contains name in string.</li>
-                <li>Make sure the second column contains age in integer.</li>
-                <li>Make sure the third column contains email in string.</li>
-                <li>If any errors occur during the processing, they will be displayed above.</li>
-            </ol>
+            {% if error_occured == 0 %}
+            <p></p>
+            {% elif error_occured == 1 %}
+            <h2 style="color: #3e874d;">Errors occurred while processing the CSV file:</h2>
+            {% if show_download %}
+            <a class="download-button" href="{% url 'download' %}">Download Highlighted CSV</a>
+            {% endif %}
+            {% else %}
+            <h2>No errors occurred while processing the CSV file.</h2>
+            {% endif %}
+            <table>
+                <tr>
+                    <th>Row Number</th>
+                    <th>Column Number</th>
+                    <th>Error Message</th>
+                </tr>
+                {% for error in error_messages %}
+                <tr>
+                    <td>{{ error.0 }}</td>
+                    <td>{{ error.1 }}</td>
+                    <td>{{ error.2 }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+            
         </div>
     </div>
 
@@ -403,14 +450,27 @@
 
     <script>
 
+        document.addEventListener('DOMContentLoaded', function () {
+            const uploadInput = document.querySelector('.upload-input');
+            const uploadButton = document.querySelector('.upload-button');
 
-        let sub = document.getElementById("subMenu")
-        function toggleMenu() {
-            sub.classList.toggle("open-menu")
-        }
+            uploadInput.addEventListener('change', function () {
+                if (uploadInput.value) {
+                    uploadButton.style.display = 'block';
+                }
+            });
+        });
+
+                let sub = document.getElementById("subMenu")
+                    function toggleMenu() {
+                        sub.classList.toggle("open-menu")
+                    }
     </script>
-    <!--========== MAIN JS ==========-->
-    <script src="{% static 'main.js' %}"></script>
+        <!--========== SCROLL REVEAL ==========-->
+        <script src="https://unpkg.com/scrollreveal"></script>
+        
+        <!--========== MAIN JS ==========-->
+        <script src="{% static 'main.js' %}"></script>
 </body>
 
 </html>

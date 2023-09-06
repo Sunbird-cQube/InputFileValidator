@@ -25,5 +25,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^custom-validation/$', views.custom_validation),
     url(r'^instructions/$', views.instructions),
+    url(r'^upload_errors/$', views.upload_errors, name='upload_errors'),
     url(r'^download/$', views.download, name='download'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

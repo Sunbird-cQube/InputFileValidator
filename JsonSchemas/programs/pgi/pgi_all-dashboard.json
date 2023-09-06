@@ -1,0 +1,75 @@
+{
+    "program": "pgi_all-dashboard",
+    "input": {
+        "type": "object",
+        "properties": {
+             "state_name": {
+                "type": "string",
+                "shouldnotnull": true
+            },
+            "district_name": {
+                "type": "string",
+                "shouldnotnull": true
+            },
+            "state_code": {
+                "type": "string",
+                "shouldnotnull": true
+            },
+            "district_code": {
+                "type": "string",
+                "shouldnotnull": true
+            },
+            "latitude": {
+                "type": "number",
+                "shouldnotnull": true
+            },
+            "longitude": {
+                "type": "number",
+                "shouldnotnull": true
+            },
+            "outcome": {
+                "type": "number",
+                "shouldnotnull": true
+            },
+            "effective_classroom_transaction": {
+                "type": "number",
+                "shouldnotnull": true
+            },
+            "infrastructure_facilities_studententitlements": {
+                "type": "number",
+                "shouldnotnull": true
+            },
+            "school_safety_and_child_protection": {
+                "type": "number",
+                "shouldnotnull": true
+            },
+            "digital_learning": {
+                "type": "number",
+                "shouldnotnull": true
+            },
+            "governance_processes": {
+                "type": "number",
+                "shouldnotnull": true
+            },
+            "grand_total": {
+                "type": "number",
+                "shouldnotnull": true
+            }
+        },
+        "required": [
+            "state_name",
+            "district_name",
+            "state_code",
+            "district_code",
+            "latitude",
+            "longitude",
+            "outcome",
+            "effective_classroom_transaction",
+            "infrastructure_facilities_studententitlements",
+            "school_safety_and_child_protection",
+            "digital_learning",
+            "governance_processes",
+            "grand_total"
+        ]
+    }
+}

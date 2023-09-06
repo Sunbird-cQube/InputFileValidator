@@ -1,0 +1,20 @@
+{
+    "program": "grade",
+    "input": {
+        "type": "object",
+        "properties": {
+            "grade_id": {
+                "type": "string",
+                "shouldNotNull": true
+            },
+            "grade": {
+                "type": "string",
+                "shouldNotNull": true
+            }
+        },
+        "required":[
+            "grade_id",
+            "grade"
+        ]
+    }
+}

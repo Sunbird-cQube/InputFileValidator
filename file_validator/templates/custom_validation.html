@@ -1,0 +1,684 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% comment %}
+    <meta name="viewport"
+        content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=320, height=device-height, target-densitydpi=medium-dpi" />
+    {% endcomment %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--========== BOX ICONS ==========-->
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+
+    <!--========== CSS ==========-->
+    <link rel="stylesheet" href="{% static 'stylesHome.css' %}">
+    <title>File Processing</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Global styles */
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Styles for header and footer */
+        header {
+            /* background-color: #333; */
+            color: #fff;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+
+
+
+        .header-buttons {
+            display: flex;
+        }
+
+        .header-buttons button {
+            margin-left: 10px;
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .header-buttons button:hover {
+            background-color: #45a049;
+        }
+
+        .header-buttons button:active {
+            background-color: #3e874d;
+        }
+
+        footer {
+            /* background-color: #333; */
+            padding: 10px;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        /* Main layout styles */
+
+
+        /* Left container styles */
+        /* .upload-files-container */
+
+        /* Keep the same styles for both containers */
+        .instructions-container {
+            /* Lighter background color */
+            border-radius: 40px;
+            padding: 60px 60px;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 10px 20px, rgba(0, 0, 0, 0.28) 0px 6px 6px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* Center horizontally */
+        }
+
+        .container {
+            margin-top: 6rem;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 10px 20px, rgba(0, 0, 0, 0.28) 0px 6px 6px;
+            padding: 2rem;
+        }
+
+        .instructions-container h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .instructions-container p {
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        .instructions-container ol {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .instructions-container li {
+            list-style-type: disc;
+            /* Use bullet points */
+            margin-left: 20px;
+            /* Adjust the indentation */
+        }
+
+        /* Responsive layout */
+
+
+        /* Dark mode styles */
+
+        /* Styles for header and footer */
+        header {
+            background-color: #fff;
+            /* Set header background to white */
+            color: #333;
+            /* Set header text color to black */
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-buttons {
+            display: flex;
+        }
+
+        .header-buttons button {
+            margin-left: 10px;
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .header-buttons button:hover {
+            background-color: #45a049;
+        }
+
+        .header-buttons button:active {
+            background-color: #3e874d;
+        }
+
+        footer {
+            /* Set footer background to white */
+            /* Set footer text color to black */
+            padding: 10px;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        /* Dark mode styles */
+        body.dark-mode {
+            background-color: #222;
+            color: #fff;
+        }
+
+        body.dark-mode header {
+            background-color: #444;
+            color: #fff;
+        }
+
+        body.dark-mode footer {
+            background-color: #444;
+            color: #fff;
+        }
+
+        body.dark-mode .container {
+            background-color: #333;
+            color: #fff;
+        }
+
+        body.dark-mode .container .instructions h2 {
+            color: #fff;
+        }
+
+        /* body.dark-mode .upload-label, */
+        body.dark-mode .upload-button,
+        body.dark-mode .download-button {
+            background-color: #4CAF50;
+            color: #fff;
+        }
+
+        /* Dark mode button styles */
+        .dark-mode-button {
+            margin-left: 10px;
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .dark-mode-button:hover {
+            background-color: #45a049;
+        }
+
+        .dark-mode-button:active {
+            background-color: #3e874d;
+        }
+
+        .dark-mode .instructions-container,
+        .dark-mode .upload-files-container {
+            background-color: #333;
+        }
+
+
+
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        th {
+            text-align: left;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .download-button {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .download-button:hover {
+            background-color: #45a049;
+        }
+
+        .download-button:active {
+            background-color: #3e874d;
+        }
+
+        /* Additional style for checkbox */
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .checkbox-label {
+            margin-left: 10px;
+            white-space: nowrap;
+        }
+
+        /* Add margin between checkbox containers */
+        .checkbox-container+.checkbox-container {
+            margin-top: 10px;
+        }
+
+        /* file upload */
+        .upload-container {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .upload-input {
+            display: none;
+        }
+
+        .upload-label {
+            margin-right: 10px;
+        }
+
+        .upload-button {
+            display: inline-block;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .upload-button:hover {
+            background-color: #0056b3;
+        }
+
+        .flexing {
+            display: flex;
+
+        }
+
+        table {
+            width: 200px
+        }
+
+        .sub-menu-wrap {
+            position: absolute;
+            top: 100%;
+            right: 10%;
+            width: 320px;
+            max-height: 0px;
+            overflow: hidden;
+            transition: transform 0.5s;
+        }
+
+        .sub-menu-wrap.open-menu {
+            max-height: 400px;
+        }
+
+        .sub-menu {
+            background: #FFF;
+            padding: 20px;
+            margin: 10px;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .user-info h3 {
+            font-weight: 500;
+        }
+
+        .user-info img {
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        .sub-menu hr {
+            border: 0;
+            height: 1px;
+            width: 100%;
+            background: #ccc;
+            margin: 15px 0 10px;
+        }
+
+        .sub-menu-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #525252;
+            margin: 12px 0;
+        }
+
+        .sub-menu-link p {
+            width: 100%;
+        }
+
+        .sub-menu-link img {
+            width: 40px;
+            background: #e5e5e5;
+            border-radius: 50%;
+            padding: 8px;
+            margin-right: 15px;
+        }
+
+        .sub-menu-link span {
+            font-size: 22px;
+            transition: transform 0.5s;
+        }
+
+        .sub-menu-link:hover span {
+            transform: translateX(5px);
+        }
+
+        .sub-menu-link:hover p {
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="l-header" id="header">
+        <nav class="nav bd-container">
+            <a href="#" class="nav__logo">CSVALID</a>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="{% url 'home' %}" class="nav__link active-link">Home</a></li>
+                    <li class="nav__item"><a href="{% url 'index' %}" class="nav__link">Basic Validation</a></li>
+                    <li class="nav__item"><a href="/custom-validation/" class="nav__link">Custom Validation</a></li>
+                    <li class="nav__item"><a href="/instructions/" class="nav__link">Instructions</a></li>
+                    <li><i class='bx bx-moon change-theme' id="theme-button"></i></li>
+                </ul>
+            </div>
+            {% if username %}
+            <img src="{%static 'user.png'%}" class="user-pic"
+                style="height: 50px;width: 50px;cursor: pointer;border-radius: 50%;">
+            <div class="sub-menu-wrap" id="subMenu">
+                <div class="sub-menu">
+                    <div class="user-info">
+                        <img src="{%static 'user.png'%}">
+                        <h2>hello</h2>
+                    </div>
+                    <hr>
+                    <span class="welcome-text">Welcome, {{ username }}</span>
+                    <a href="#" class="sub-menu-link">
+                        <img src="{%static 'profile.png'%}">
+                        <p>Edit profile</p>
+                        <span>></span>
+                    </a>
+                    <a href="#" class="sub-menu-link">
+                        <img src="{%static 'setting.png'%}">
+                        <p>Settings & privacy</p>
+                        <span>></span>
+                    </a>
+                    <a href="#" class="sub-menu-link">
+                        <img src="{%static 'help.png'%}">
+                        <p>Help & Support</p>
+                        <span>></span>
+                    </a>
+                    {% if request.user.is_staff %}
+                    <a href="{% url 'dashboard' %}" class="sub-menu-link">
+                        <img src="{% static 'dashboard.png' %}">
+                        <p>Dashboard</p>
+                        <span>></span>
+                    </a>
+                    {% endif %}
+                    <a href="#" class="">
+                        <a href="{% url 'logout_view' %}" class="sub-menu-link">
+                            <img src="{%static 'logout.png'%}">
+                            <p>Logout</p>
+                            <span>></span>
+                        </a>
+                        {% else %}
+                        <a href="{% url 'login' %}" class="sub-menu-link">
+                            <img src="{%static 'logout.png'%}">
+                            <p>Login</p>
+                            <span>></span>
+                        </a>
+                        {% endif %}
+                    </a>
+                </div>
+            </div>
+            <div class="nav__toggle" id="nav-toggle">
+                <i class='bx bx-menu'></i>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container px-5">
+
+
+        <div class="">
+            <br>
+            <form action="/custom-validation/" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <center>
+                    <h1>Custom Validation</h1>
+                </center>
+                <br>
+                <input type="hidden" name="custom_data" id="custom_data" value="[]">
+                <div class="upload-container">
+                    <label for="fileUpload" class="upload-label">Upload File:</label>
+                    <label for="fileUpload" class="upload-button">Upload</label>
+                    <input type="file" id="fileUpload" name="csv_file" accept=".csv, .xlsx, .xls"
+                        onchange="handleFileUpload()" style="display: none;">
+
+                </div>
+                <div class="">
+                    <div class="form-group 2">
+                        <p class="selected-file-label"></p>
+                    </div>
+                </div>
+                <div class="">
+                    <div class="">
+                        <label for="inputColumn">Enter Column Number</label>
+                        <input type="text" id="ColumnNumber" class="form-control" placeholder="Range(0-10)"
+                            aria-label="ColumnNumber" aria-describedby="basic-addon1">
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="col-md-12 col-lg-6 checkbox-container">
+                        <input type="checkbox" id="missingCheckbox">
+                        <label class="checkbox-label" for="exampleCheckbox">Check for Missing Values</label>
+                    </div>
+
+                    <div class="col-md-12 col-lg-6 checkbox-container">
+                        <input type="checkbox" id="uniqueCheckbox">
+                        <label class="checkbox-label" for="exampleCheckbox">Check for Unique Values</label>
+                    </div>
+
+                </div>
+                <div class="flexing row">
+                    <div class="col-md-12 col-lg-6">
+                        <label for="inputCity">Validate Data Type</label>
+                        <input type="text" id="DataType" class="form-control" aria-label="University"
+                            aria-describedby="basic-addon1">
+                    </div>
+                    <div class="col-md-12 col-lg-6">
+                        <label for="inputCity">Regular Expression Validation</label>
+                        <input type="text" id="ReGx" class="form-control" aria-label="University"
+                            aria-describedby="basic-addon1">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-lg-6">
+                        <label for="inputState">Minimum Length Validation</label>
+                        <input type="text" id="MinLen" class="form-control" aria-label="Branch" id="inputBranch">
+                    </div>
+                    <div class="col-md-12 col-lg-6">
+                        <label for="inputCity">Maximum Length Validation</label>
+                        <input type="text" id="MaxLen" class="form-control" aria-label="City" id="inputCity">
+                    </div>
+                </div>
+                <input class="btn btn-success mt-3" type="button" onclick="AddRow()" value="InsertRow" />
+
+            </form>
+
+        </div>
+    </div>
+    <div class="p-5">
+
+        <table class="table table-hover" id="studentTable" style="margin-top: 50px;">
+            <thead>
+                <tr>
+                    <th scope="col" style="white-space: nowrap;">Column Number</th>
+                    <th scope="col" style="white-space: nowrap;">Data Type</th>
+                    <th scope="col" style="white-space: nowrap;">Regular Expression</th>
+                    <th scope="col" style="white-space: nowrap;">Minimum Length</th>
+                    <th scope="col" style="white-space: nowrap;">Maximum Length</th>
+                    <th scope="col" style="white-space: nowrap;">Missing Values</th>
+                    <th scope="col" style="white-space: nowrap;">Unique Values</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="studentTableBody">
+            </tbody>
+        </table>
+        <div class="text-center">
+            <button class="btn btn-success" id="validateButton" style="display: none;"
+                onclick="validateRows()">Validate</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>© File Validator. All rights reserved.</p>
+    </footer>
+
+    <script>
+        var custom = [];
+
+        function handleFileUpload() {
+            const fileInput = document.getElementById("fileUpload");
+
+            if (fileInput.files.length > 0) {
+                const fileName = fileInput.files[0].name;
+
+                // Display the selected file name
+                const fileLabel = document.querySelector('.selected-file-label');
+                fileLabel.textContent = "Selected File: " + fileName;
+            }
+        }
+
+        function AddRow() {
+            var columnnumber = document.getElementById("ColumnNumber").value;
+            var datatype = document.getElementById("DataType").value;
+            var regx = document.getElementById("ReGx").value;
+            var minlen = document.getElementById("MinLen").value;
+            var maxlen = document.getElementById("MaxLen").value;
+            var missingCheckbox = document.getElementById("missingCheckbox").checked;
+            var uniqueCheckbox = document.getElementById("uniqueCheckbox").checked;
+
+
+            var column_data = {
+                ColumnNumber: columnnumber,
+                DataType: datatype,
+                Regx: regx,
+                MinLen: minlen,
+                MaxLen: maxlen,
+                MissingValues: missingCheckbox ? 'Yes' : 'No',
+                UniqueValues: uniqueCheckbox ? 'Yes' : 'No'
+            };
+
+            custom.push(column_data);
+            console.log(custom);
+            // document.getElementById("custom_data").value = JSON.stringify(custom)
+            ClearFields();
+            RefreshTable();
+        }
+
+        function RemoveRow(index) {
+            if (confirm("Do you want to delete: " + custom[index].ColumnNumber)) {
+                custom.splice(index, 1);
+                // document.getElementById("custom_data").value = JSON.stringify(custom)
+                RefreshTable();
+                RefreshTable();
+            }
+        }
+
+        function ClearFields() {
+            document.getElementById("ColumnNumber").value = "";
+            document.getElementById("DataType").value = "";
+            document.getElementById("ReGx").value = "";
+            document.getElementById("MinLen").value = "";
+            document.getElementById("MaxLen").value = "";
+            document.getElementById("missingCheckbox").checked = false;
+            document.getElementById("uniqueCheckbox").checked = false;
+        }
+
+        function RefreshTable() {
+            var tableBody = document.getElementById("studentTableBody");
+            tableBody.innerHTML = "";
+
+            for (var i = 0; i < custom.length; i++) {
+                var row = tableBody.insertRow();
+
+                var cell1 = row.insertCell(0);
+                var cell2 = row.insertCell(1);
+                var cell3 = row.insertCell(2);
+                var cell4 = row.insertCell(3);
+                var cell5 = row.insertCell(4);
+                var cell6 = row.insertCell(5);
+                var cell7 = row.insertCell(6);
+                var cell8 = row.insertCell(7);
+                const validateButton = document.getElementById("validateButton");
+                validateButton.style.display = custom.length > 0 ? "block" : "none";
+                cell1.innerHTML = custom[i].ColumnNumber;
+                cell2.innerHTML = custom[i].DataType;
+                cell3.innerHTML = custom[i].Regx;
+                cell4.innerHTML = custom[i].MinLen;
+                cell5.innerHTML = custom[i].MaxLen;
+                cell6.innerHTML = custom[i].MissingValues;
+                cell7.innerHTML = custom[i].UniqueValues;
+                cell8.innerHTML = '<input class="btn btn-danger" type="button" onclick="RemoveRow(' + i + ')" value="Remove" />';
+
+            }
+        }
+
+        function validateRows() {
+            // Logic to validate rows goes here
+            document.getElementById("custom_data").value = JSON.stringify(custom)
+            alert("Validating rows...");
+        }
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const uploadInput = document.querySelector('.upload-input');
+            const uploadButton = document.querySelector('.upload-button');
+
+            uploadInput.addEventListener('change', function () {
+                if (uploadInput.value) {
+                    uploadButton.style.display = 'block';
+                }
+            });
+        });
+
+        let sub = document.getElementById("subMenu")
+        function toggleMenu() {
+            sub.classList.toggle("open-menu")
+        }
+    </script>
+    <script src="{% static 'main.js' %}"></script>
+</body>
+
+</html>

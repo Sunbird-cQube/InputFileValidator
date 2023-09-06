@@ -1,0 +1,40 @@
+{
+    "program": "district",
+    "input": {
+        "type": "object",
+        "properties": {
+            "district_id": {
+                "type": "string",
+                "shouldNotNull": true
+            },
+            "district_name": {
+                "type": "string",
+                "shouldNotNull": true
+            },
+             "state_id": {
+                "type": "string",
+                "shouldNotNull": true
+            },
+             "state_name": {
+                "type": "string",
+                "shouldNotNull": true
+            },
+             "latitude": {
+                "type": "number",
+                "shouldNotNull": false
+            },
+             "longitude": {
+                "type": "number",
+                "shouldNotNull": false
+            }
+        },
+        "required":[
+            "district_id",
+            "district_name",
+            "state_id",
+            "state_name",
+            "latitude",
+            "longitude"
+        ]
+    }
+}

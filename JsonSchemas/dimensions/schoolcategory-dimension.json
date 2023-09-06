@@ -1,0 +1,24 @@
+{
+    "program": "schoolcategory",
+    "input": {
+        "type": "object",
+        "properties": {
+            "schoolcategory_id": {
+                "type": "string",
+                "shouldnotnull": true
+            },
+            "schoolcategory_name": {
+                "type": "string",
+                "shouldnotnull": true
+            },
+             "grades": {
+                "type": "string",
+                "shouldnotnull": false
+            }      
+        },
+        "required": [
+            "schoolcategory_id",
+            "schoolcategory_name"
+        ]
+    }
+}
